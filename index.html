@@ -50,74 +50,124 @@
       opacity: .5;
       pointer-events: none;
     }
-    .hero-glow {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 50% 38%, rgba(184,150,90,0.13) 0%, transparent 75%),
-        radial-gradient(ellipse 40% 30% at 50% 38%, rgba(212,180,131,0.07) 0%, transparent 60%);
-    }
-    .hero-lines {
-      position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      overflow: hidden;
-    }
+   .hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 75% 60% at 50% 35%, rgba(184,150,90,0.16) 0%, transparent 78%),
+    radial-gradient(ellipse 45% 35% at 50% 40%, rgba(212,180,131,0.09) 0%, transparent 65%);
+  filter: blur(2px);
+}
+ .hero-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: .9;
+}
     .hero-lines::before {
-      content: '';
-      position: absolute; left: 50%; transform: translateX(-50%);
-      width: 1px; background: rgba(184,150,90,0.18);
-      top: 0; height: 100%;
-    }
-    .hero-content {
-      position: relative; z-index: 2;
-      text-align: center;
-      padding: 2rem 2rem;
-      display: flex; flex-direction: column; align-items: center;
-    }
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(184,150,90,0.25),
+    transparent
+  );
+}
+
+  .hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
     .hero-tag {
-      display: inline-flex; align-items: center; gap: .7rem;
-      font-family: 'Tajawal', sans-serif;
-      font-size: .78rem; letter-spacing: .22em;
-      color: var(--gold2);
-      text-transform: uppercase;
-      margin-bottom: 2.2rem;
-      opacity: 0; animation: aFadeUp .8s .1s ease forwards;
-    }
+  display: inline-flex;
+  align-items: center;
+  gap: .8rem;
+  font-family: 'Cinzel', 'Tajawal', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: .28em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: aFadeUp .9s .1s ease forwards;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.10),
+    0 8px 18px rgba(212,180,131,0.25);
+}
     .hero-tag::before,
-    .hero-tag::after {
-      content: '';
-      display: block; width: 30px; height: 1px;
-      background: var(--gold2); opacity: .5;
-    }
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 11vw, 7.5rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--deep);
-      line-height: 1.05;
-      letter-spacing: .01em;
-      opacity: 0; animation: aFadeUp .9s .25s ease forwards;
-    }
-    .hero-name em { color: var(--gold2); font-style: italic; }
-    .hero-amp {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      color: var(--gold);
-      font-style: italic;
-      display: block;
-      margin: .2rem 0;
-      letter-spacing: .06em;
-    }
-    .hero-ornament {
-      display: flex; align-items: center; gap: 1rem;
-      margin: 2rem 0;
-      opacity: 0; animation: aFadeIn .8s .55s ease forwards;
-    }
-    .hero-ornament::before,
-    .hero-ornament::after {
-      content: '';
-      flex: 1; max-width: 120px; height: 1px;
-      background: linear-gradient(to var(--side, left), transparent, var(--gold));
-    }
+.hero-tag::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold2), transparent);
+  opacity: .6;
+}
+   .hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4.8rem, 10vw, 8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--deep);
+  line-height: 1.05;
+  letter-spacing: .02em;
+  opacity: 0;
+  animation: aFadeUp .9s .25s ease forwards;
+ text-shadow:
+    0 3px 10px rgba(0,0,0,0.15),
+    0 15px 35px rgba(0,0,0,0.10);
+}
+
+  .hero-name em {
+  color: var(--gold2);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .03em;
+}
+.hero-amp {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--gold);
+  font-style: italic;
+  display: block;
+  margin: .6rem 0;
+  letter-spacing: .15em;
+  opacity: .75;
+}
+   .hero-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.2rem 0;
+  opacity: 0;
+  animation: aFadeIn .8s .55s ease forwards;
+}
+    .hero-ornament span {
+  color: var(--gold2);
+  font-size: 1rem;
+  letter-spacing: .2em;
+}
+.hero-date {
+  font-family: 'Tajawal', sans-serif;
+  font-size: clamp(.9rem, 2vw, 1rem);
+  color: var(--muted);
+  letter-spacing: .2em;
+  opacity: 0;
+  animation: aFadeUp .8s .65s ease forwards;
+}
     .hero-ornament::before { --side: right; }
     .hero-ornament::after  { --side: left; }
     .hero-ornament span { color: var(--gold2); font-size: .9rem; letter-spacing: .15em; }
@@ -128,12 +178,19 @@
       letter-spacing: .18em;
       opacity: 0; animation: aFadeUp .8s .65s ease forwards;
     }
-    .hero-scroll-hint {
-      position: absolute; bottom: 2.5rem; z-index: 3;
-      display: flex; flex-direction: column; align-items: center; gap: .5rem;
-        color: var(--gold2); font-size: .7rem; letter-spacing: .18em;
-      animation: aPulse 2.4s 1.5s infinite;
-    }
+ .hero-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  color: var(--gold2);
+  font-size: .75rem;
+  letter-spacing: .2em;
+  animation: aPulse 2.4s 1.5s infinite;
+}
     .hero-scroll-hint svg { opacity: .5; }
 
     .page-wrap { max-width: 700px; margin: 0 auto; padding: 0 1.25rem; }
@@ -309,7 +366,7 @@
   <div class="hero-glow"></div>
   <div class="hero-lines"></div>
   <div class="hero-content">
-    <div class="hero-tag"><span>حفل زفاف</span></div>
+    <div class="hero-tag"><span>WELCOME TO OUR SPECIAL DAY</span></div>
     <h1 class="hero-name">
       محمد
       <span class="hero-amp">&amp;</span>
