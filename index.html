@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حفل زفافنا 💍</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Tajawal:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg:    #fffaf3;
+  --bg2:   #f6efe6;
+  --card:  #ffffff;
+
+  --gold:  #c8a45c;
+  --gold2: #e6c98f;
+  --gold3: #a88442;
+
+  --line:  rgba(200,164,92,0.18);
+
+  --deep:  #4a3a22;   /* بدل الأسود: بني دافئ */
+  --text:  #3f2f1f;
+  --muted: #8a775f;
+  --soft:  #c7b59a;
+}
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+       background: linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: .5;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 38%, rgba(184,150,90,0.13) 0%, transparent 75%),
+        radial-gradient(ellipse 40% 30% at 50% 38%, rgba(212,180,131,0.07) 0%, transparent 60%);
+    }
+    .hero-lines {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      overflow: hidden;
+    }
+    .hero-lines::before {
+      content: '';
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: 1px; background: rgba(184,150,90,0.18);
+      top: 0; height: 100%;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 2rem 2rem;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .7rem;
+      font-family: 'Tajawal', sans-serif;
+      font-size: .78rem; letter-spacing: .22em;
+      color: var(--gold2);
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+      opacity: 0; animation: aFadeUp .8s .1s ease forwards;
+    }
+    .hero-tag::before,
+    .hero-tag::after {
+      content: '';
+      display: block; width: 30px; height: 1px;
+      background: var(--gold2); opacity: .5;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 11vw, 7.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.05;
+      letter-spacing: .01em;
+      opacity: 0; animation: aFadeUp .9s .25s ease forwards;
+    }
+    .hero-name em { color: var(--gold2); font-style: italic; }
+    .hero-amp {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--gold);
+      font-style: italic;
+      display: block;
+      margin: .2rem 0;
+      letter-spacing: .06em;
+    }
+    .hero-ornament {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 2rem 0;
+      opacity: 0; animation: aFadeIn .8s .55s ease forwards;
+    }
+    .hero-ornament::before,
+    .hero-ornament::after {
+      content: '';
+      flex: 1; max-width: 120px; height: 1px;
+      background: linear-gradient(to var(--side, left), transparent, var(--gold));
+    }
+    .hero-ornament::before { --side: right; }
+    .hero-ornament::after  { --side: left; }
+    .hero-ornament span { color: var(--gold2); font-size: .9rem; letter-spacing: .15em; }
+    .hero-date {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(.85rem, 2.2vw, 1rem);
+      color: var(--muted));
+      letter-spacing: .18em;
+      opacity: 0; animation: aFadeUp .8s .65s ease forwards;
+    }
+    .hero-scroll-hint {
+      position: absolute; bottom: 2.5rem; z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+        color: var(--gold2); font-size: .7rem; letter-spacing: .18em;
+      animation: aPulse 2.4s 1.5s infinite;
+    }
+    .hero-scroll-hint svg { opacity: .5; }
+
+    .page-wrap { max-width: 700px; margin: 0 auto; padding: 0 1.25rem; }
+
+    .s-head { text-align: center; padding: 4.5rem 0 2.5rem; }
+    .s-head-label {
+      display: inline-block;
+      font-size: .75rem; letter-spacing: .22em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: .9rem;
+    }
+    .s-head h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 400; color: var(--deep);
+      line-height: 1.2;
+    }
+    .s-rule {
+      display: flex; align-items: center; gap: .9rem;
+      margin: 1.2rem auto 0; max-width: 200px;
+    }
+    .s-rule::before, .s-rule::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--line);
+    }
+    .s-rule span { color: var(--gold2); font-size: .8rem; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 2.5rem 2rem 2.2rem;
+    }
+    .upload-lede {
+      font-size: .95rem; color: var(--muted);
+      line-height: 1.75; text-align: center;
+      margin-bottom: 2rem;
+    }
+    .drop-zone {
+      border: 1px dashed rgba(184,150,90,.35);
+      border-radius: 2px;
+      padding: 2.2rem 1rem;
+      cursor: pointer;
+      transition: background .25s, border-color .25s;
+      background: var(--bg2);
+      margin-bottom: 1.5rem;
+      position: relative;
+      text-align: center;
+    }
+    .drop-zone:hover, .drop-zone.drag-over {
+      border-color: var(--gold); background: rgba(184,150,90,.05);
+    }
+    .drop-zone input[type=file] {
+      position: absolute; inset: 0; opacity: 0;
+      cursor: pointer; width: 100%; height: 100%;
+    }
+    .dz-icon { font-size: 1.8rem; margin-bottom: .6rem; display: block; opacity: .6; }
+    .dz-main { font-size: .95rem; color: var(--gold3); font-weight: 500; display: block; margin-bottom: .3rem; }
+    .dz-sub { font-size: .8rem; color: var(--soft); }
+
+    #preview-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 6px; margin-bottom: 1.5rem;
+    }
+    .preview-thumb {
+      aspect-ratio: 1; border-radius: 2px; overflow: hidden;
+      position: relative; border: 1px solid var(--line);
+    }
+    .preview-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .preview-thumb .rm {
+      position: absolute; top: 4px; left: 4px;
+      width: 20px; height: 20px;
+      background: rgba(14,11,7,.7); border: none;
+      border-radius: 50%; color: #eee;
+      font-size: 10px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .progress-wrap {
+      height: 2px; background: rgba(184,150,90,.15);
+      margin-bottom: 1.2rem; display: none; border-radius: 4px; overflow: hidden;
+    }
+    .progress-bar { height: 100%; width: 0%; background: var(--gold); transition: width .35s; }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: .6rem;
+      width: 100%; padding: .95rem 1.5rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      font-family: 'Tajawal', sans-serif;
+      font-size: .95rem; font-weight: 500;
+      color: var(--gold3);
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: background .22s, color .22s, transform .15s;
+    }
+    .btn:hover { background: var(--gold); color: #fff; }
+    .btn:active { transform: scale(.98); }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn.solid { background: var(--gold); color: #fff; }
+    .btn.solid:hover { background: var(--gold3); border-color: var(--gold3); }
+
+    #status-msg, #msg-status {
+      text-align: center; font-size: .85rem;
+      color: var(--gold3); min-height: 1.2em;
+      margin-top: .7rem; font-weight: 500;
+    }
+    #status-msg.error { color: #c0392b; }
+
+    .form-row { margin-bottom: 1.3rem; }
+    .form-row label {
+      display: block; font-size: .78rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--soft); margin-bottom: .5rem;
+    }
+    .form-row input, .form-row textarea {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: .8rem 1rem;
+      font-family: 'Tajawal', sans-serif;
+      font-size: .95rem; color: var(--text);
+      outline: none; resize: vertical;
+      transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row textarea:focus { border-color: var(--gold); }
+
+    #success-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(14,11,7,.72);
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    #success-overlay.show { display: flex; }
+    .success-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 3.5rem 2.5rem;
+      text-align: center; max-width: 400px; width: 100%;
+      animation: aPopIn .4s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .success-sym { font-size: 2.4rem; display: block; margin-bottom: 1.2rem; }
+    .success-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 400; color: var(--deep);
+      margin-bottom: .7rem;
+    }
+    .success-box p { font-size: .95rem; color: var(--muted); line-height: 1.75; }
+
+    footer {
+      margin-top: 5rem;
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--soft); font-size: .8rem; letter-spacing: .1em;
+    }
+    footer em { color: var(--gold); font-style: normal; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s, transform .7s; }
+    .reveal.vis { opacity: 1; transform: none; }
+
+    @keyframes aFadeUp  { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+    @keyframes aFadeIn  { from { opacity:0; } to { opacity:1; } }
+    @keyframes aPulse   { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+    @keyframes aPopIn   { from { opacity:0; transform:scale(.82); } to { opacity:1; transform:scale(1); } }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span>حفل زفاف</span></div>
+    <h1 class="hero-name">
+      محمد
+      <span class="hero-amp">&amp;</span>
+      سجود
+    </h1>
+    <div class="hero-ornament"><span>✦</span></div>
+    <p class="hero-date">يسعدنا أن تشاركونا أجمل اللحظات في هذا اليوم المميز</p>
+  </div>
+  <div class="hero-scroll-hint">
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
+      <rect x="1" y="1" width="12" height="18" rx="6" stroke="#d4b483" stroke-width="1"/>
+      <circle cx="7" cy="5.5" r="1.5" fill="#d4b483">
+        <animate attributeName="cy" values="5.5;11.5;5.5" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+    تمرير
+  </div>
+</section>
+
+<div class="page-wrap">
+
+  <div class="s-head reveal">
+    
+    <h2>شاركونا لحظاتكم</h2>
+    <div class="s-rule"><span>✦</span></div>
+  </div>
+
+  <div class="card reveal">
+    <p class="upload-lede">
+      التقطوا أجمل اللحظات وشاركوها معنا مباشرةً،<br />
+      سيكون لكل صورة منكم مكانٌ خاص في ذاكرتنا.
+    </p>
+
+    <div class="drop-zone" id="drop-zone">
+      <input type="file" id="file-input" accept="image/*" multiple capture="environment" />
+      <span class="dz-icon">◎</span>
+      <span class="dz-main">شاركنا صورك من العرس</span>
+   
+    </div>
+
+    <div id="preview-grid"></div>
+
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <button class="btn solid" id="upload-btn" disabled>أرسل الصور</button>
+    <div id="status-msg"></div>
+  </div>
+
+  <div class="s-head reveal">
+    <h2>رسالة للعروسين</h2>
+    <div class="s-rule"><span>✦</span></div>
+  </div>
+
+  <div class="card reveal" style="margin-bottom: 1px;">
+    <div class="form-row">
+ 
+      <input type="text" id="sender-name" placeholder="من يشاركنا هذه الذكرى؟…" />
+    </div>
+    <div class="form-row">
+    
+      <textarea id="message-text" rows="5" placeholder=" كلماتك الطيبة …"></textarea>
+    </div>
+    <button class="btn" id="send-msg-btn">أرسل التهنئة</button>
+    <div id="msg-status"></div>
+  </div>
+
+</div>
+
+<div id="success-overlay">
+  <div class="success-box">
+    <span class="success-sym">✦</span>
+    <h2>شكراً لكم</h2>
+    <p>شكراً لمشاركتنا هذه الذكريات الجميلة<br />ستبقى لحظاتكم في قلوبنا إلى الأبد</p>
+    <button class="btn solid" id="close-success" style="margin-top:2rem;">حسناً</button>
+  </div>
+</div>
+
+<footer>
+  صُنع بـ <em>❤</em> لأجمل يوم في حياتنا
+</footer>
+
+<script>
+ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxKJe3DS1Ktp1tzan4d7DCjFv1ct4A-c48nSS8SdBkfUEb3u7HsNFjLRV4rCW9bziwT/exec";
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const fileInput    = document.getElementById('file-input');
+  const dropZone     = document.getElementById('drop-zone');
+  const previewGrid  = document.getElementById('preview-grid');
+  const uploadBtn    = document.getElementById('upload-btn');
+  const progressWrap = document.getElementById('progress-wrap');
+  const progressBar  = document.getElementById('progress-bar');
+  const statusMsg    = document.getElementById('status-msg');
+  let selectedFiles  = [];
+
+  function refreshPreview() {
+    previewGrid.innerHTML = '';
+    selectedFiles.forEach((file, i) => {
+      const r = new FileReader();
+      r.onload = e => {
+        const d = document.createElement('div');
+        d.className = 'preview-thumb';
+        d.innerHTML = `<img src="${e.target.result}" /><button class="rm" data-i="${i}">✕</button>`;
+        previewGrid.appendChild(d);
+      };
+      r.readAsDataURL(file);
+    });
+    uploadBtn.disabled = !selectedFiles.length;
+  }
+
+  fileInput.addEventListener('change', e => {
+    selectedFiles = [...selectedFiles, ...Array.from(e.target.files)].slice(0, 10);
+    refreshPreview();
+  });
+
+  previewGrid.addEventListener('click', e => {
+    const b = e.target.closest('.rm');
+    if (!b) return;
+    selectedFiles.splice(+b.dataset.i, 1);
+    refreshPreview();
+  });
+
+  ['dragover','dragenter'].forEach(t => dropZone.addEventListener(t, e => {
+    e.preventDefault(); dropZone.classList.add('drag-over');
+  }));
+  ['dragleave','drop'].forEach(t => dropZone.addEventListener(t, e => {
+    e.preventDefault(); dropZone.classList.remove('drag-over');
+    if (t === 'drop') {
+      selectedFiles = [...selectedFiles,
+        ...Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'))
+      ].slice(0, 10);
+      refreshPreview();
+    }
+  }));
+
+  // رفع صورة واحدة إلى Google Drive
+  async function uploadOne(file, index, total) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = async e => {
+        try {
+          const res = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              fileData: e.target.result,
+              fileName: file.name,
+              mimeType: file.type
+            })
+          });
+          const data = await res.json();
+          if (data.success) {
+            resolve(data);
+          } else {
+            reject(new Error(data.error || 'فشل الرفع'));
+          }
+        } catch (err) {
+          reject(err);
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  uploadBtn.addEventListener('click', async () => {
+    if (!selectedFiles.length) return;
+    uploadBtn.disabled = true;
+    statusMsg.className = '';
+    progressWrap.style.display = 'block';
+    progressBar.style.width = '0%';
+
+    let successCount = 0;
+    let failCount = 0;
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      statusMsg.textContent = `جارٍ رفع الصورة ${i + 1} من ${selectedFiles.length}…`;
+      progressBar.style.width = ((i / selectedFiles.length) * 100) + '%';
+
+      try {
+        await uploadOne(selectedFiles[i], i, selectedFiles.length);
+        successCount++;
+      } catch (err) {
+        failCount++;
+      }
+
+      progressBar.style.width = (((i + 1) / selectedFiles.length) * 100) + '%';
+    }
+
+    if (failCount === 0) {
+      statusMsg.textContent = '';
+      selectedFiles = [];
+      previewGrid.innerHTML = '';
+      fileInput.value = '';
+      setTimeout(() => {
+        progressWrap.style.display = 'none';
+        progressBar.style.width = '0%';
+        document.getElementById('success-overlay').classList.add('show');
+      }, 380);
+    } else {
+      statusMsg.className = 'error';
+      statusMsg.textContent = `تم رفع ${successCount} صورة، فشل ${failCount}`;
+      uploadBtn.disabled = false;
+      setTimeout(() => {
+        progressWrap.style.display = 'none';
+        progressBar.style.width = '0%';
+      }, 800);
+    }
+  });
+
+document.getElementById('send-msg-btn').addEventListener('click', async () => {
+
+  const name = document.getElementById('sender-name').value.trim();
+  const msg  = document.getElementById('message-text').value.trim();
+  const st   = document.getElementById('msg-status');
+
+  if (!msg) {
+    st.textContent = '⚠ الرجاء كتابة رسالتك أولاً';
+    return;
+  }
+
+  st.textContent = 'جارٍ الإرسال...';
+
+  try {
+
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        action: 'saveMessage',
+        name: name,
+        message: msg
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      st.textContent = '';
+      document.getElementById('sender-name').value = '';
+      document.getElementById('message-text').value = '';
+      document.getElementById('success-overlay').classList.add('show');
+    } else {
+      st.textContent = 'فشل الإرسال';
+    }
+
+  } catch (err) {
+    st.textContent = 'حدث خطأ أثناء الإرسال';
+  }
+
+});
+
+  document.getElementById('close-success').addEventListener('click', () => {
+    document.getElementById('success-overlay').classList.remove('show');
+  });
+  document.getElementById('success-overlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) e.currentTarget.classList.remove('show');
+  });
+</script>
+</body>
+</html>
